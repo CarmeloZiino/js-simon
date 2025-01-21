@@ -65,3 +65,34 @@ function countDownGo () {
       time--;
     }
   }
+
+/* 5. Una volta comparsi gli input, l'utente inserirà i numeri che ipoteticamente ha visto.
+Il programma deve:
+1. raccogliere i numeri dagli input;
+2. Confronta i vari numeri con quelli comparsi
+3. Stampa un messaggio dove dice quali numeri sono uguali
+*/
+
+answersForm.addEventListener ("submit" , function (){
+    event.preventDefault();
+
+ const userNumbers = [ //con .querySelectorAll controlla gli input e quindi il valore che l'utente ha inserito
+     document.querySelectorAll("input")[0].value,
+     document.querySelectorAll("input")[1].value,
+     document.querySelectorAll("input")[2].value,
+     document.querySelectorAll("input")[3].value,
+     document.querySelectorAll("input")[4].value,
+   ];
+
+   let correctNumbers = [];
+   for (let i=0 ; i < userNumbers.length; i++) {  // con questo ciclo verifico se i numeri che ha inserito l'utente siano i medesimi che il computer ha stampato. Se è sì, prende l'informazione e la stampa sulla pagina.
+if (randomNumbers.includes(parseInt(userNumbers[i]))){
+    correctNumbers.push(userNumbers[i])
+}}
+
+if (correctNumbers.length > 0) { // Condizioni per le quali se ha inserito 1 o + numeri uguali, stampa un messaggio di congratulazioni. Se no amen, e ci riprova
+    messageElement.innerHTML = `Ottimo! Hai indovinato i seguenti numeri: ${correctNumbers.join(", ")}`;
+  } else {
+    messageElement.innerHTML = "Non hai indovinato nessun numero. Riprova!";
+  }
+});
