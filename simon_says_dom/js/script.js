@@ -22,8 +22,29 @@ const answersForm = document.getElementById("answers-form")
 const inputGroup = document.getElementById("input-group")
 const messageElement = document.getElementById("message")
 
-// 2. Il Programma genera 5 numeri casuali da 1 a 100 e li stampa in pagina
+
+// 2. Imposto Variabili che definiscono il tempo del CountDown e i numeri che compaiono
+
+const timeDuration = 30;
+const numeriPossibili = 5;
 
 
+// 3. Il Programma genera 5 numeri casuali da 1 a 100 e li stampa in pagina
+
+const randomNumbers = [];
 
 
+for (let i = 0; randomNumbers.length < numeriPossibili; i++) {
+    let randomNumber = Math.floor(Math.random() * 50) + 1;
+    if (!randomNumbers.includes(randomNumber)) {
+      randomNumbers.push(randomNumber);
+    }
+  }
+  
+  randomNumbers.forEach((number) => {
+    const li = document.createElement("li");
+    li.textContent = number;
+    numberList.appendChild(li);
+  });
+
+// 4. Il programma fa partire un countdown di 30 secondi
