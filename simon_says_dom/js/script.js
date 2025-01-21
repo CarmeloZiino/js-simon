@@ -48,3 +48,20 @@ for (let i = 0; randomNumbers.length < numeriPossibili; i++) {
   });
 
 // 4. Il programma fa partire un countdown di 30 secondi
+
+let time = timeDuration;
+const countdownInterval = setInterval( countDownGo , 1000);
+
+
+function countDownGo () {
+    countDown.innerHTML = `Rimangono: ${time} s`; 
+  
+    if (time == 0) {
+      clearInterval(countdownInterval);
+      countDown.innerHTML = `Bene! Adesso inserisci i numeri che hai visto qui sotto:`  
+     numberList.classList.add("d-none");
+     answersForm.classList.remove("d-none");      
+    } else {
+      time--;
+    }
+  }
